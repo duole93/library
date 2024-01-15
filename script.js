@@ -7,7 +7,7 @@ const authorDialog = document.querySelector("#author");
 const pagesDialog = document.querySelector("#pages");
 const isReadDialog = document.querySelector("#isRead");
 
-const closeDialogBtn = document.querySelector("#new-book-dialog > form > .cancel-btn");
+const cancelDialogBtn = document.querySelector("#new-book-dialog > form > .cancel-btn");
 const submitaBookBtn = document.querySelector("#new-book-dialog > form > .add-btn");
 
 const bookContainer = document.querySelector(".book-container");
@@ -47,19 +47,31 @@ function displayBooks(){
     books.forEach((item, index)=>{
         let bookCard= document.createElement("div");
         let title= document.createElement("h1");
-        title.textContent = item.title;
         let author= document.createElement("p");
-        author.textContent = item.author;
         let pages= document.createElement("p");
+        let isReadCheckBox= document.createElement("input"); 
+        let editBtn = document.createElement("button");
+        let deleteBtn = document.createElement("button");
+        
+        title.textContent = item.title;
+        author.textContent = item.author;
         pages.textContent = item.pages;
-        let isRead= document.createElement("p"); 
-        if(item.isRead)
-            isRead.textContent = 'Competed';
-        else
-            isRead.textContent = 'inprogress';
-        bookCard.append(title, author, pages, isRead);
+
+        isReadCheckBox.setAttribute("type","checkbox");
+        isReadCheckBox.checked = item.isRead;
+
+        editBtn.classList.add("edit-btn");
+        editBtn.textContent = "✎";
+
+        deleteBtn.classList.add("close-btn");
+        deleteBtn.textContent = "X";
+
+        
+        bookCard.append(title, author, pages, isReadCheckBox, editBtn, deleteBtn);
         bookCard.classList.add("book-card");
         bookCard.classList.add(`${index}`)
+
+
         bookContainer.appendChild(bookCard);
     });
 }
@@ -86,7 +98,7 @@ submitaBookBtn.addEventListener('click',(e)=>{
     resetDialog();
 })
 
-closeDialogBtn.addEventListener('click', (e)=>{
+cancelDialogBtn.addEventListener('click', (e)=>{
     e.preventDefault();
     newBookDialog.close();
     resetDialog();
