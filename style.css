@@ -1,11 +1,14 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
-*{
+
+* {
+    font-family: 'lato', sans-serif;
     box-sizing: border-box;
 }
-button{
+
+button {
     outline: none;
     border: 2px solid black;
     padding: 15px 30px;
@@ -13,19 +16,21 @@ button{
     background-color: white;
 }
 
-section{
-}
-button:hover{
+section {}
+
+button:hover {
     background-color: black;
     color: white;
 }
-.book-nav{
+
+.book-nav {
     text-align: center;
     padding: 20px;
-    border-bottom:2px solid black;
+    border-bottom: 2px solid black;
     margin-bottom: 10px;
 }
-.book-container{
+
+.book-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px;
@@ -34,20 +39,57 @@ button:hover{
     margin: 0 auto;
 }
 
-.book-card{
+.book-card {
     border: 2px solid black;
     position: relative;
     padding: 15px;
 }
 
-.book-card h1{
+.book-card h1 {
     margin: 0;
 }
-.book-card > .close-btn {
+
+.book-card>.close-btn {
     position: absolute;
-    top:15px;
-    right: 15px;
+    top: 5px;
+    right: 5px;
     border: 0;
     padding: 5px 10px;
+    display: none;
+}
+
+.book-card>.close-btn.active {
+    display: block;
+}
+
+#new-book-dialog[open] {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    gap: 15px;
+    text-align: center;
+}
+
+#new-book-dialog form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+}
+
+#new-book-dialog div {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+}
+
+#new-book-dialog input[type=text],
+input[type=number] {
+    padding: 5px 15px;
+    outline: none;
+    border: 2px solid black;
+    width: 70%;
+    font-size: 1rem;
 }
 

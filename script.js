@@ -7,8 +7,8 @@ const authorDialog = document.querySelector("#author");
 const pagesDialog = document.querySelector("#pages");
 const isReadDialog = document.querySelector("#isRead");
 
-const cancelDialogBtn = document.querySelector("#new-book-dialog > form > .cancel-btn");
-const submitaBookBtn = document.querySelector("#new-book-dialog > form > .add-btn");
+const cancelDialogBtn = document.querySelector("#new-book-dialog > form  .cancel-btn");
+const submitaBookBtn = document.querySelector("#new-book-dialog > form  .add-btn");
 
 const bookContainer = document.querySelector(".book-container");
 
@@ -84,6 +84,16 @@ function displayBooks(){
         bookCard.append(title, author, pages,isReadLabel ,isReadCheckBox, deleteBtn);
         bookCard.classList.add("book-card");
         bookCard.classList.add(`${index}`)
+
+        bookCard.addEventListener("mouseenter",(e)=>{
+            e.stopPropagation();
+            e.target.querySelector(".close-btn").classList.add("active");
+        })
+        bookCard.addEventListener("mouseleave",(e)=>{
+            e.stopPropagation();
+            e.target.querySelector(".close-btn").classList.remove("active");
+        })
+
         bookContainer.appendChild(bookCard);
     });
 }
