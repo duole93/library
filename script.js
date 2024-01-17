@@ -36,9 +36,17 @@ function Book(title, author, pages, isRead) {
 
 //list of book
 const books = new Array();
+books.push(new Book("naruto", "mangaka", 123214, true));
+books.push(new Book("one piece", "mangaka", 432122, false));
+books.push(new Book("two piecve", "mangaka", 432122, false));
+books.push(new Book("three piecve", "mangaka", 432122, false));
+books.push(new Book("four piecve", "mangaka", 432122, false));
+books.push(new Book("five piecve", "mangaka", 432122, false));
+books.push(new Book("six piecve", "mangaka", 432122, false));
+books.push(new Book("seven piecve", "mangaka", 432122, false));  
 
 //display book - clear display, and display book
-
+displayBooks();
 function displayBooks(){
     //clear display;
     bookContainer.innerHTML="";
@@ -50,7 +58,6 @@ function displayBooks(){
         let author= document.createElement("p");
         let pages= document.createElement("p");
         let isReadCheckBox= document.createElement("input"); 
-        let editBtn = document.createElement("button");
         let deleteBtn = document.createElement("button");
         
         title.textContent = item.title;
@@ -60,21 +67,22 @@ function displayBooks(){
         isReadCheckBox.setAttribute("type","checkbox");
         isReadCheckBox.checked = item.isRead;
 
-        editBtn.classList.add("edit-btn");
-        editBtn.textContent = "✎";
-
         deleteBtn.classList.add("close-btn");
         deleteBtn.textContent = "X";
-
+        deleteBtn.addEventListener("click", (e)=>{
+            console.log('e :>> ', e.target.parentElement);
+            books.splice(index,1);
+            displayBooks();
+            e.stopPropagation();
+        });
         
-        bookCard.append(title, author, pages, isReadCheckBox, editBtn, deleteBtn);
+        bookCard.append(title, author, pages, isReadCheckBox, deleteBtn);
         bookCard.classList.add("book-card");
         bookCard.classList.add(`${index}`)
-
-
         bookContainer.appendChild(bookCard);
     });
 }
+
 function resetDialog(){
     titleDialog.value = "";
     authorDialog.value ="";
