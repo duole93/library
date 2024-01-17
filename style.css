@@ -1,0 +1,53 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+*{
+    box-sizing: border-box;
+}
+button{
+    outline: none;
+    border: 2px solid black;
+    padding: 15px 30px;
+    font-size: 1rem;
+    background-color: white;
+}
+
+section{
+}
+button:hover{
+    background-color: black;
+    color: white;
+}
+.book-nav{
+    text-align: center;
+    padding: 20px;
+    border-bottom:2px solid black;
+    margin-bottom: 10px;
+}
+.book-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 30px;
+    width: 960px;
+    margin: 0 auto;
+}
+
+.book-card{
+    border: 2px solid black;
+    position: relative;
+    padding: 15px;
+}
+
+.book-card h1{
+    margin: 0;
+}
+.book-card > .close-btn {
+    position: absolute;
+    top:15px;
+    right: 15px;
+    border: 0;
+    padding: 5px 10px;
+}
+

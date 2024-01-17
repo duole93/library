@@ -41,7 +41,7 @@ books.push(new Book("one piece", "mangaka", 432122, false));
 books.push(new Book("two piecve", "mangaka", 432122, false));
 books.push(new Book("three piecve", "mangaka", 432122, false));
 books.push(new Book("four piecve", "mangaka", 432122, false));
-books.push(new Book("five piecve", "mangaka", 432122, false));
+books.push(new Book("five piecve", "mangaka", 432122, true));
 books.push(new Book("six piecve", "mangaka", 432122, false));
 books.push(new Book("seven piecve", "mangaka", 432122, false));  
 
@@ -58,13 +58,18 @@ function displayBooks(){
         let author= document.createElement("p");
         let pages= document.createElement("p");
         let isReadCheckBox= document.createElement("input"); 
+        let isReadLabel = document.createElement("label");
         let deleteBtn = document.createElement("button");
         
         title.textContent = item.title;
         author.textContent = item.author;
         pages.textContent = item.pages;
 
+        isReadLabel.setAttribute("for",`isReadBook${index}` );
+        isReadLabel.textContent="complete"
+
         isReadCheckBox.setAttribute("type","checkbox");
+        isReadCheckBox.setAttribute("id",`isReadBook${index}`);
         isReadCheckBox.checked = item.isRead;
 
         deleteBtn.classList.add("close-btn");
@@ -76,7 +81,7 @@ function displayBooks(){
             e.stopPropagation();
         });
         
-        bookCard.append(title, author, pages, isReadCheckBox, deleteBtn);
+        bookCard.append(title, author, pages,isReadLabel ,isReadCheckBox, deleteBtn);
         bookCard.classList.add("book-card");
         bookCard.classList.add(`${index}`)
         bookContainer.appendChild(bookCard);
